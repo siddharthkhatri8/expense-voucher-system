@@ -136,6 +136,30 @@ npm run dev
 
 How the System Works
 
+Demo Login Credentials
+
+The following demo accounts can be used to test the different roles in the application.
+
+Role            Email                      Password 
+Employee        employee@example.com       TestPassword123!
+Director        director@example.com       DirectorPassword123!
+Accounts Team   accounts@example.com      AccountsPassword123!
+
+How to Test
+
+1. Start the backend and frontend servers.
+2. Open http://localhost:5173 in your browser.
+3. Log in using one of the demo accounts above.
+4. Explore the features available to that role.
+
+Important: These credentials are examples for local testing. They will work only if the corresponding accounts have already been created in the database. Public registration is intended for employee accounts; director and accounts accounts must be provisioned separately.
+
+For security, use only disposable demo accounts with non-sensitive data. Do not reuse these passwords for real accounts or production deployments. If this repository is public, replace these demo passwords with newly generated, dedicated test credentials before publishing them.
+
+
+
+
+
 The usual voucher process is:
 
 1. An employee creates a voucher and enters the expense details.
