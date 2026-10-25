@@ -9,6 +9,7 @@ const authRoutes = require("./routes/auth");
 const voucherRoutes = require("./routes/vouchers");
 const directorRoutes = require("./routes/director");
 const accountsRoutes = require("./routes/accounts");
+const attachmentsRoutes = require("./routes/attachments");
 
 app.use(cors());
 app.use(express.json());
@@ -17,6 +18,7 @@ app.use("/api/vouchers", voucherRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/director", directorRoutes);
 app.use("/api/accounts", accountsRoutes);
+app.use("/api/attachments", attachmentsRoutes);
 
 app.get("/", (req, res) => {
   res.json({

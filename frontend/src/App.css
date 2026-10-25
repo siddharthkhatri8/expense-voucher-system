@@ -345,3 +345,224 @@ td strong,
     flex-direction: column;
   }
 }
+
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f6f8fc;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px;
+  background: white;
+  border: 1px solid #e9edf4;
+  border-radius: 18px;
+  box-shadow: 0 15px 50px rgba(32, 40, 59, 0.06);
+}
+
+.login-icon {
+  margin-bottom: 25px;
+}
+
+.login-card .eyebrow {
+  margin-bottom: 10px;
+}
+
+.login-card h1 {
+  font-size: 30px;
+}
+
+.login-card label {
+  display: block;
+  margin: 22px 0 8px;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #dfe4ee;
+  border-radius: 9px;
+  outline: none;
+}
+
+.login-card input:focus {
+  border-color: #4359cf;
+  box-shadow: 0 0 0 3px #4359cf18;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.login-error {
+  color: #c43e48;
+  font-size: 12px;
+}
+
+.login-footer {
+  margin: 24px 0 0;
+  color: #8993a6;
+  font-size: 11px;
+  text-align: center;
+}
+
+
+
+.voucher-form {
+  display: grid;
+  gap: 10px;
+  max-width: 650px;
+}
+
+.voucher-form label {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.voucher-form input,
+.voucher-form select,
+.voucher-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dfe4ee;
+  border-radius: 9px;
+  font: inherit;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.voucher-form input:focus,
+.voucher-form select:focus,
+.voucher-form textarea:focus {
+  outline: 2px solid #4359cf;
+  outline-offset: 1px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.voucher-actions {
+  min-width: 150px;
+}
+
+.signature-panel {
+  min-width: 280px;
+  padding: 12px;
+  border: 1px solid #e2e7f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.signature-panel p {
+  font-size: 12px;
+  margin: 0 0 10px;
+}
+
+.signature-canvas {
+  width: 100%;
+  height: 130px;
+  overflow: hidden;
+  border: 1px dashed #aab4c5;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.signature-drawing {
+  display: block;
+  width: 100%;
+  height: 130px;
+}
+
+.signature-success {
+  color: #218653;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+
+.director-form {
+  display: grid;
+  gap: 10px;
+  min-width: 280px;
+  max-width: 420px;
+  padding: 12px;
+  border: 1px solid #e2e7f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.director-form label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.director-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #dfe4ee;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.director-form .form-actions {
+  flex-wrap: wrap;
+}
+
+```css
+.voucher-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+  align-items: center;
+}
+
+.voucher-filters input,
+.voucher-filters select {
+  min-width: 150px;
+  padding: 11px 12px;
+  border: 1px solid #dfe4ee;
+  border-radius: 9px;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+}
+
+.voucher-filters input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.voucher-filters input:focus,
+.voucher-filters select:focus {
+  outline: 2px solid #4359cf;
+  outline-offset: 1px;
+}
+
+@media (max-width: 600px) {
+  .voucher-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .voucher-filters input,
+  .voucher-filters select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+```

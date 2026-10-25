@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,20 +5,33 @@ const pool = require("../db");
 
 const router = express.Router();
 
-// Register a new user
+// Register a new employee account
 router.post("/register", async (req, res) => {
   try {
     const { full_name, email, password, role } = req.body;
 
-    if (!full_name || !email || !password || !role) {
+    if (!full_name || !email || !password) {
       return res.status(400).json({
-        message: "All fields are required",
+        message: "Full name, email, and password are required",
       });
     }
 
-    if (!["employee", "director", "accounts"].includes(role)) {
+    // Public registration must never create privileged accounts.
+    if (role && role !== "employee") {
+      return res.status(403).json({
+        message: "Public registration is only available for employees.",
+      });
+    }
+
+    if (
+      typeof full_name !== "string" ||
+      typeof email !== "string" ||
+      typeof password !== "string" ||
+      !full_name.trim() ||
+      !email.trim()
+    ) {
       return res.status(400).json({
-        message: "Invalid role",
+        message: "Please provide valid registration details",
       });
     }
 
@@ -35,11 +47,16 @@ router.post("/register", async (req, res) => {
       `INSERT INTO users (full_name, email, password_hash, role)
        VALUES ($1, $2, $3, $4)
        RETURNING id, full_name, email, role, created_at`,
-      [full_name.trim(), email.trim().toLowerCase(), passwordHash, role]
+      [
+        full_name.trim(),
+        email.trim().toLowerCase(),
+        passwordHash,
+        "employee",
+      ]
     );
 
-    res.status(201).json({
-      message: "User registered successfully",
+    return res.status(201).json({
+      message: "Employee registered successfully",
       user: result.rows[0],
     });
   } catch (error) {
@@ -50,7 +67,10 @@ router.post("/register", async (req, res) => {
     }
 
     console.error("Registration error:", error.message);
-    res.status(500).json({ message: "Unable to register user" });
+
+    return res.status(500).json({
+      message: "Unable to register user",
+    });
   }
 });
 
@@ -59,7 +79,12 @@ router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    if (!email || !password) {
+    if (
+      typeof email !== "string" ||
+      typeof password !== "string" ||
+      !email.trim() ||
+      !password
+    ) {
       return res.status(400).json({
         message: "Email and password are required",
       });
@@ -90,7 +115,7 @@ router.post("/login", async (req, res) => {
       { expiresIn: "2h" }
     );
 
-    res.json({
+    return res.json({
       message: "Login successful",
       token,
       user: {
@@ -102,7 +127,10 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     console.error("Login error:", error.message);
-    res.status(500).json({ message: "Unable to log in" });
+
+    return res.status(500).json({
+      message: "Unable to log in",
+    });
   }
 });
 
